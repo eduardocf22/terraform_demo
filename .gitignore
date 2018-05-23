@@ -1,1 +1,5 @@
-*.terraform
+.terraform
+workspace.code-workspace
+file.out
+terraform.tfstate
+terraform.tfstate.backup
