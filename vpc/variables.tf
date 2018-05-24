@@ -13,7 +13,7 @@ variable "vpc_cidr" {
     description = "VPC CIDR"
     default = "10.20.0.0/16"
 }
-variable "public_subnet" {
+variable "public_subnet_01" {
     description = "public subnet"
     default = "10.30.0.0/24"
 }

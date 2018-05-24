@@ -12,7 +12,7 @@ resource "aws_vpc" "vpc" {
 resource "aws_subnet" "public_subnet_01" {
     availability_zone = "${var.region}a"
     vpc_id = "${aws_vpc.vpc.id}"
-    cidr_block = "${var.public_subnet}"
+    cidr_block = "${var.public_subnet_01}"
     tags {
         Name = "${var.vpc_name}-subnet-public-01"
     }
