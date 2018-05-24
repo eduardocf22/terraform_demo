@@ -15,7 +15,7 @@ variable "vpc_cidr" {
 }
 variable "public_subnet" {
     description = "public subnet"
-    default = "10.20.0.0/24"
+    default = "10.30.0.0/24"
 }
 
 variable "public_subnet_02" {
@@ -25,7 +25,7 @@ variable "public_subnet_02" {
 
 variable "private_subnet_01" {
     description = "public subnet 02"
-    default = "10.20.10.0/24"
+    default = "10.30.10.0/24"
 }
 
 variable "private_subnet_02" {
