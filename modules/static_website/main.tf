@@ -54,10 +54,7 @@ resource "aws_s3_bucket_object" "index_page" {
     content_type = "text/html"
     source = "${var.index_file_path}"
     etag = "${md5(file(var.index_file_path))}"
-}
-
-data "aws_s3_bucket" "selected" {
-  bucket = "${var.bucket_name}"
+    depends_on = ["aws_s3_bucket.website_bucket"]
 }
 
 resource "aws_cloudfront_distribution" "cdn" {
@@ -67,7 +64,7 @@ resource "aws_cloudfront_distribution" "cdn" {
 
     origin {
         origin_id = "${var.bucket_name}"
-        domain_name = "${data.aws_s3_bucket.selected.website_endpoint}"
+        domain_name = "${aws_s3_bucket.website_bucket.website_endpoint}"
 
         custom_origin_config {
             origin_protocol_policy = "match-viewer"
@@ -116,18 +113,22 @@ resource "aws_cloudfront_distribution" "cdn" {
     tags {
         Name = "terraform-demo-cdn"
     }
+    depends_on = ["aws_s3_bucket.website_bucket"]
 }
 
 output "bucket_arn" {
     value = "${aws_s3_bucket.website_bucket.arn}"
+    depends_on = ["aws_s3_bucket.website_bucket"]
 }
 
 output "bucket_domain_name" {
-    value = "${data.aws_s3_bucket.selected.bucket_domain_name}"
+    value = "${aws_s3_bucket.website_bucket.bucket_domain_name}"
+    depends_on = ["aws_s3_bucket.website_bucket"]
 }
 
 output "website_endpoint" {
     value = "${aws_s3_bucket.website_bucket.website_endpoint}"
+    depends_on = ["aws_s3_bucket.website_bucket"]
 }
 
 output "cdn_id" {

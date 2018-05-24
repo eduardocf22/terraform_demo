@@ -11,7 +11,7 @@ variable "content_secret_token" {
 
 variable "bucket_name" {
     description = "Bucket Name"
-    default = "demo-terraform01224"
+    default = "demo-terraform01228"
 }
 
 variable "iam_deployer_username" {
