@@ -11,7 +11,7 @@ variable "vpc_cidr" {
     description = "CIDR of the VPC"
 }
 
-variable "public_subnet" {
+variable "public_subnet_01" {
     description = "Public subnet CIDR"
 }
 
